@@ -2,6 +2,6 @@ target/
 
 .sass-cache
 
-/.idea*
+/.idea
 *.iml
 /atlassian-ide-plugin.xml
