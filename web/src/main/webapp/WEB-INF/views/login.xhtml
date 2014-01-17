@@ -1,0 +1,50 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:c="http://java.sun.com/jsp/jstl/core"
+				xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:h="http://java.sun.com/jsf/html"
+				template="/WEB-INF/layouts/one-col.xhtml">
+
+	<ui:define name="title">#{msg['sws.login.title']}</ui:define>
+
+	<ui:define name="content">
+
+		<f:loadBundle basename="messages" var="msg"/>
+
+		<p:outputPanel rendered="${not empty param.login_error}">
+		<!--<c:if test="${not empty param.login_error}">-->
+			<!--<div class="login-error">-->
+				<h:outputText value="#{msg['sws.login.error']}"/>
+				<!--<h:outputFormat value="#{msg['sws.login.error.reason']}">-->
+				<!--<f:param value="#{sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}" />-->
+				<!--</h:outputFormat>-->
+			<!--</div>-->
+		<!--</c:if>-->
+		</p:outputPanel>
+
+		<p:panel header="#{msg['sws.login.title']}" styleClass="login-box">
+			<form name="f" action="${request.contextPath}/app/j_spring_security_check" method="post">
+				<div class="input-container">
+					<label for="username">#{msg['sws.login.username']}</label>
+					<c:if test="${not empty param.login_error}">
+						<c:set var="username" value="${sessionScope.SPRING_SECURITY_LAST_USERNAME}"/>
+					</c:if>
+					<input type="text" id="username" name="j_username" value="#{username}"/>
+				</div>
+				<div class="input-container">
+					<h:outputLabel for="password" value="#{msg['sws.login.password']}" />
+					<input type="password" id="password" name="j_password"/>
+				</div>
+				<!--<div class="save-pass">-->
+					<!--<input id="rememberme" type="checkbox" name="_spring_security_remember_me"/>-->
+					<!--<label for="rememberme"><h:outputText value="#{msg['sws.login.rememberMe']}"/></label>-->
+				<!--</div>-->
+				<div class="bottom-buttons">
+					<input name="submit" type="submit" value="#{msg['sws.login.actions.login']}"/>
+				</div>
+			</form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

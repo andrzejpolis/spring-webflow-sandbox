@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!--<util:list id="menuItems">-->
+		<!--<bean class="amg.ccgw.panel.web.MenuBeanGroup">-->
+			<!--<property name="name" value="admin"/>-->
+			<!--<property name="items">-->
+				<!--<util:list value-type="amg.ccgw.panel.web.MenuBeanItem">-->
+					<!--<bean class="amg.ccgw.panel.web.MenuBeanItem">-->
+						<!--<property name="flowId" value="users"/>-->
+						<!--<property name="role" value="PANEL_ACCESS"/>-->
+					<!--</bean>-->
+					<!--<bean class="amg.ccgw.panel.web.MenuBeanItem">-->
+						<!--<property name="flowId" value="providers"/>-->
+						<!--<property name="role" value="PROVIDER"/>-->
+					<!--</bean>-->
+					<!--<bean class="amg.ccgw.panel.web.MenuBeanItem">-->
+						<!--<property name="flowId" value="netops"/>-->
+						<!--<property name="role" value="NTW_CONFIG" />-->
+					<!--</bean>-->
+					<!--<bean class="amg.ccgw.panel.web.MenuBeanItem">-->
+						<!--<property name="flowId" value="whitelist"/>-->
+						<!--<property name="role" value="WHITE_LIST" />-->
+					<!--</bean>-->
+				<!--</util:list>-->
+			<!--</property>-->
+		<!--</bean>-->
+
+		<!--<bean class="amg.ccgw.panel.web.MenuBeanGroup">-->
+			<!--<property name="name" value="stats"/>-->
+		<!--</bean>-->
+	<!--</util:list>-->
+
+</beans>

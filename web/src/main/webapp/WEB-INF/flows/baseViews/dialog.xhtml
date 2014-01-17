@@ -1,0 +1,50 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:p="http://primefaces.org/ui"
+				xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<p:dialog styleClass="dialogWindow" widgetVar="dialogVar" width="300px"
+			  resizable="false" visible="true" draggable="false" rendered="#{not empty dialogData}">
+		<f:facet name="header">
+			#{msg[dialogData.title]}
+		</f:facet>
+
+		<c:if test="#{dialogData.definedContent}">
+			<ui:insert name="dialogBody"/>
+		</c:if>
+
+		<c:if test="#{not empty dialogData.include}">
+			<ui:include src="#{dialogData.include}" />
+		</c:if>
+
+		<c:if test="#{dialogData.type == 'CONFIRMATION' and not empty dialogData.message}">
+			<img class="questionIcon" src="${request.contextPath}/images/warning-big.png" alt="question"/>
+		</c:if>
+
+		<p:outputPanel styleClass="popUpConfirmationMsg" layout="block" rendered="#{not empty dialogData.message}">
+			<h:outputFormat value="#{msg[dialogData.message]}" escape="false"
+							rendered="#{not dialogData.definedContent}">
+				<c:forEach items="#{dialogData.messageArgs}" var="_param">
+					<f:param value="#{_param}"/>
+				</c:forEach>
+			</h:outputFormat>
+		</p:outputPanel>
+
+		<f:facet name="footer">
+			<c:if test="#{not empty dialogData.leftButton}">
+				<ui:include src="dialogButton.xhtml">
+					<ui:param name="buttonData" value="#{dialogData.leftButton}"/>
+				</ui:include>
+			</c:if>
+			<c:if test="#{not empty dialogData.rightButton}">
+				<ui:include src="dialogButton.xhtml">
+					<ui:param name="buttonData" value="#{dialogData.rightButton}"/>
+				</ui:include>
+			</c:if>		
+		</f:facet>
+	</p:dialog>
+</ui:composition>

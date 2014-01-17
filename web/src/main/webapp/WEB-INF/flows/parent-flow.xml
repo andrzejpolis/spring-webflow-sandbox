@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<input name="tab" value="flowScope.tab" required="false" />
+
+	<end-state id="endAndLogout" view="externalRedirect:servletRelative:/logout" />
+	<end-state id="end" view="externalRedirect:servletRelative:/" />
+
+	<view-state id="errorView" view="/WEB-INF/flows/baseViews/error.xhtml">
+	</view-state>
+
+	<global-transitions>
+		<transition on="logout" to="endAndLogout"/>
+		<transition on="exit" to="end" />
+
+		<transition on-exception="java.lang.Exception" to="errorView">
+		</transition>
+	</global-transitions>
+</flow>
